@@ -330,89 +330,90 @@
   </footer>
 
   <!-- SCRIPT: puxa data/content.json e injeta no HTML -->
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Transforma valor em URL final: aceita URL completa, caminho absoluto ou só nome do arquivo
-    function toUrl(v) {
-      if (!v) return null;
-      if (/^(https?:)?\/\//.test(v) || v.startsWith('/')) return v;
-      return '/static/uploads/' + v.replace(/^\/+/, '');
-    }
+  // Transforma valor em URL final: aceita URL completa, caminho absoluto
+  // e também nome de arquivo vindo do CMS (que costuma publicar em /uploads).
+  function toUrl(v) {
+    if (!v) return null;
+    // Já é URL absoluta ou caminho absoluto? usa direto
+    if (/^(https?:)?\/\//.test(v) || v.startsWith('/')) return v;
+    // Caso venha só "arquivo.jpg", usa /uploads (padrão do Netlify CMS)
+    return '/uploads/' + v.replace(/^\/+/, '');
+  }
 
-    // Pega o primeiro campo existente entre várias opções de chave
-    function firstField(obj, keys) {
-      for (const k of keys) {
-        if (obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k]) {
-          return obj[k];
-        }
+  // Pega o primeiro campo existente entre várias opções
+  function firstField(obj, keys) {
+    for (const k of keys) {
+      if (obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k]) {
+        return obj[k];
       }
-      return null;
     }
+    return null;
+  }
 
-    fetch('data/content.json?ts=' + Date.now(), { cache: 'no-store' })
-      .then(r => r.json())
-      .then(json => {
-        // se o CMS salvou aninhado, tentamos acessar o nível com os campos
-        const data = json.conteudo_do_site || json.content || json;
+  fetch('data/content.json?ts=' + Date.now(), { cache: 'no-store' })
+    .then(r => r.json())
+    .then(json => {
+      const data = json.conteudo_do_site || json.content || json;
 
-        // Mapeamento de possíveis nomes de chaves (cobri várias variações para funcionar de 1ª)
-        const map = {
-          nomeSite: ['nome_do_site','nome_site','nome','titulo_site'],
+      const map = {
+        nomeSite: ['nome_do_site','nome_site','nome','titulo_site'],
 
-          heroImg:  ['hero_img','imagem_hero','hero_imagem','imagem_do_hero'],
-          boxImg:   ['caixinha_img','box_img','imagem_caixinha'],
-          cardsImg: ['cards_img','imagem_cards'],
-          guideImg: ['guia_img','guide_img','imagem_guia'],
+        heroImg:  ['hero_img','imagem_hero','hero_imagem','imagem_do_hero'],
+        boxImg:   ['caixinha_img','box_img','imagem_caixinha'],
+        cardsImg: ['cards_img','imagem_cards'],
+        guideImg: ['guia_img','guide_img','imagem_guia'],
 
-          titulo1:  ['hero_titulo_linha1','titulo1','hero_titulo1'],
-          titulo2:  ['hero_titulo_linha2','titulo2','hero_titulo2'],
+        titulo1:  ['hero_titulo_linha1','titulo1','hero_titulo1'],
+        titulo2:  ['hero_titulo_linha2','titulo2','hero_titulo2'],
 
-          frase:    ['hero_frase','frase_depoimento','hero_depoimento'],
+        frase:    ['hero_frase','frase_depoimento','hero_depoimento'],
 
-          cta1:     ['cta_primario','cta1','cta_primary'],
-          cta2:     ['cta_secundario','cta2','cta_secondary'],
-          estat:    ['estatistica_familias','estatisticas','familias_estatistica']
-        };
+        cta1:     ['cta_primario','cta1','cta_primary'],
+        cta2:     ['cta_secundario','cta2','cta_secondary'],
+        estat:    ['estatistica_familias','estatisticas','familias_estatistica']
+      };
 
-        // ====== NOME DO SITE / TITLE ======
-        const nomeSiteVal = firstField(data, map.nomeSite);
-        if (nomeSiteVal) {
-          const ns = document.getElementById('nomeSite');
-          const ns2 = document.getElementById('nomeSite2');
-          if (ns)  ns.textContent  = nomeSiteVal;
-          if (ns2) ns2.textContent = nomeSiteVal;
-          document.title = nomeSiteVal + ' — Kit de Bênçãos Bíblicas para Família';
-        }
+      const nomeSiteVal = firstField(data, map.nomeSite);
+      if (nomeSiteVal) {
+        const ns = document.getElementById('nomeSite');
+        const ns2 = document.getElementById('nomeSite2');
+        if (ns)  ns.textContent  = nomeSiteVal;
+        if (ns2) ns2.textContent = nomeSiteVal;
+        document.title = nomeSiteVal + ' — Kit de Bênçãos Bíblicas para Família';
+      }
 
-        // ====== IMAGENS ======
-        const heroVal  = firstField(data, map.heroImg);
-        const boxVal   = firstField(data, map.boxImg);
-        const cardsVal = firstField(data, map.cardsImg);
-        const guideVal = firstField(data, map.guideImg);
+      // IMAGENS (com cache-buster)
+      const heroVal  = firstField(data, map.heroImg);
+      const boxVal   = firstField(data, map.boxImg);
+      const cardsVal = firstField(data, map.cardsImg);
+      const guideVal = firstField(data, map.guideImg);
+      const bust = '?v=' + Date.now();
 
-        if (heroVal)  { const el = document.getElementById('heroImg');  if (el) el.src  = toUrl(heroVal); }
-        if (boxVal)   { const el = document.getElementById('boxImg');   if (el) el.src   = toUrl(boxVal); }
-        if (cardsVal) { const el = document.getElementById('cardsImg'); if (el) el.src = toUrl(cardsVal); }
-        if (guideVal) { const el = document.getElementById('guideImg'); if (el) el.src = toUrl(guideVal); }
+      if (heroVal)  { const el = document.getElementById('heroImg');  if (el) el.src  = toUrl(heroVal)  + bust; }
+      if (boxVal)   { const el = document.getElementById('boxImg');   if (el) el.src   = toUrl(boxVal)   + bust; }
+      if (cardsVal) { const el = document.getElementById('cardsImg'); if (el) el.src = toUrl(cardsVal) + bust; }
+      if (guideVal) { const el = document.getElementById('guideImg'); if (el) el.src = toUrl(guideVal) + bust; }
 
-        // ====== TEXTOS ======
-        const t1 = firstField(data, map.titulo1);
-        const t2 = firstField(data, map.titulo2);
-        const fr = firstField(data, map.frase);
-        const c1 = firstField(data, map.cta1);
-        const c2 = firstField(data, map.cta2);
-        const es = firstField(data, map.estat);
+      // TEXTOS
+      const t1 = firstField(data, map.titulo1);
+      const t2 = firstField(data, map.titulo2);
+      const fr = firstField(data, map.frase);
+      const c1 = firstField(data, map.cta1);
+      const c2 = firstField(data, map.cta2);
+      const es = firstField(data, map.estat);
 
-        if (t1) { const el = document.getElementById('titulo1'); if (el) el.textContent = t1; }
-        if (t2) { const el = document.getElementById('titulo2'); if (el) el.textContent = t2; }
-        if (fr) { const el = document.getElementById('frase');   if (el) el.textContent = fr; }
-        if (c1) { const el = document.getElementById('cta1');    if (el) el.textContent = c1; }
-        if (c2) { const el = document.getElementById('cta2');    if (el) el.textContent = c2; }
-        if (es) { const el = document.getElementById('estat');   if (el) el.textContent = es; }
-        if (c1) { const el = document.getElementById('ctaTop');  if (el) el.textContent = c1; }
-      })
-      .catch(err => console.error('Erro ao carregar conteúdo do CMS:', err));
-  </script>
+      if (t1) { const el = document.getElementById('titulo1'); if (el) el.textContent = t1; }
+      if (t2) { const el = document.getElementById('titulo2'); if (el) el.textContent = t2; }
+      if (fr) { const el = document.getElementById('frase');   if (el) el.textContent = fr; }
+      if (c1) { const el = document.getElementById('cta1');    if (el) el.textContent = c1; }
+      if (c2) { const el = document.getElementById('cta2');    if (el) el.textContent = c2; }
+      if (es) { const el = document.getElementById('estat');   if (el) el.textContent = es; }
+      if (c1) { const el = document.getElementById('ctaTop');  if (el) el.textContent = c1; }
+    })
+    .catch(err => console.error('Erro ao carregar conteúdo do CMS:', err));
+</script>
 </body>
 </html>
