@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+publish_mode: simple
+
+collections:
+  - label: "Conteúdo do Site"
+    name: "conteudo"
+    files:
+      - label: "Textos & Imagens"
+        name: "content"
+        file: "data/content.json"
+        fields:
+          - { label: "Nome do Site", name: "site_name", widget: "string" }
+          - { label: "Hero - Título Linha 1", name: "hero_title_line1", widget: "string" }
+          - { label: "Hero - Título Linha 2", name: "hero_title_line2", widget: "string" }
+          - { label: "Hero - Frase/Depoimento", name: "hero_quote", widget: "text" }
+          - { label: "CTA Primário", name: "hero_cta_primary", widget: "string" }
+          - { label: "CTA Secundário", name: "hero_cta_secondary", widget: "string" }
+          - { label: "Estatística de Famílias", name: "stat_families", widget: "string" }
+          - { label: "Imagem do Hero", name: "image_hero", widget: "image" }
+          - { label: "Card 1 - Título", name: "card1_title", widget: "string" }
+          - { label: "Card 1 - Descrição", name: "card1_desc", widget: "text" }
+          - { label: "Card 1 - Imagem", name: "image_card1", widget: "image" }
+          - { label: "Card 2 - Título", name: "card2_title", widget: "string" }
+          - { label: "Card 2 - Descrição", name: "card2_desc", widget: "text" }
+          - { label: "Card 2 - Imagem", name: "image_card2", widget: "image" }
+          - { label: "Card 3 - Título", name: "card3_title", widget: "string" }
+          - { label: "Card 3 - Descrição", name: "card3_desc", widget: "text" }
+          - { label: "Card 3 - Imagem", name: "image_card3", widget: "image" }
+          - { label: "Preço Riscar (opcional)", name: "price_original", widget: "string", required: false }
+          - { label: "Preço Atual", name: "price_current", widget: "string" }
+          - { label: "Preço Parcelado", name: "price_installments", widget: "string" }
+          - { label: "Etiqueta de Desconto", name: "offer_badge", widget: "string" }
+          - { label: "Rodapé - Texto", name: "footer_text", widget: "text" }
