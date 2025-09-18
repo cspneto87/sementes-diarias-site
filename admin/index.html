@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Admin • Sementes Diárias</title>
-  <script src="https://unpkg.com/netlify-cms@^2/dist/netlify-cms.js"></script>
+
+  <!-- Netlify Identity (login do CMS) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
-<body></body>
+<body>
+  <!-- Netlify/Decap CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2/dist/netlify-cms.js"></script>
+
+  <script>
+    // Redireciona de volta para /admin após login
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+</body>
 </html>
