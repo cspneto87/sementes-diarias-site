@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sementes Diárias — Kit de Bênçãos Bíblicas para Família</title>
+  <title id="docTitle">Sementes Diárias — Kit de Bênçãos Bíblicas para Família</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,7 @@
     <div class="container mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-[var(--brand)] text-white grid place-items-center font-bold">SD</div>
-        <span class="font-extrabold tracking-tight text-zinc-900">Sementes Diárias</span>
+        <span id="nomeSite" class="font-extrabold tracking-tight text-zinc-900">Sementes Diárias</span>
       </div>
       <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-600">
         <a href="#conteudo" class="hover:text-[var(--brand)]">Conteúdo</a>
@@ -54,28 +54,28 @@
         <a href="#faq" class="hover:text-[var(--brand)]">Perguntas</a>
         <a href="#garantia" class="hover:text-[var(--brand)]">Garantia</a>
       </nav>
-      <a href="#oferta" class="px-4 py-2 rounded-xl bg-[var(--brand)] text-white text-sm font-semibold soft">Quero plantar hoje</a>
+      <a id="ctaTop" href="#oferta" class="px-4 py-2 rounded-xl bg-[var(--brand)] text-white text-sm font-semibold soft">Quero plantar hoje</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="conteudo">
     <div class="container mx-auto px-4 pt-10 md:pt-16 pb-8 md:pb-14 grid md:grid-cols-2 gap-8 items-center">
       <div>
         <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.05] text-zinc-900">
-          <span class="block text-emerald-700">SEMENTES</span>
-          <span class="block text-[var(--orange)]">DIÁRIAS</span>
+          <span id="titulo1" class="block text-emerald-700">SEMENTES</span>
+          <span id="titulo2" class="block text-[var(--orange)]">DIÁRIAS</span>
         </h1>
         <p class="mt-5 text-zinc-700 leading-relaxed">Todo dia, uma bênção. Todo ensino, um momento. Todo momento, um legado.</p>
 
         <div class="quote mt-5 bg-white/95 border border-zinc-100 rounded-2xl p-4">
-          <div class="text-[13px] text-zinc-600">“Mãe, hoje vai sair o card de <span class="font-semibold text-zinc-800">bondade</span>... Ensina pra Deus me ajudar sempre?”</div>
+          <div class="text-[13px] text-zinc-600" id="frase">“Mãe, hoje vai sair o card de <span class="font-semibold text-zinc-800">bondade</span>... Ensina pra Deus me ajudar sempre?”</div>
           <div class="text-[12px] text-zinc-500 mt-1">— frase real enviada por uma assinante</div>
         </div>
 
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#oferta" class="px-5 py-3 rounded-xl bg-[var(--brand)] text-white font-semibold soft">Quero Plantar Sementes Hoje</a>
-          <a href="#conteudo" class="px-5 py-3 rounded-xl border border-zinc-200 font-semibold bg-white">Saber Mais</a>
+          <a id="cta1" href="#oferta" class="px-5 py-3 rounded-xl bg-[var(--brand)] text-white font-semibold soft">Quero Plantar Sementes Hoje</a>
+          <a id="cta2" href="#conteudo" class="px-5 py-3 rounded-xl border border-zinc-200 font-semibold bg-white">Saber Mais</a>
         </div>
 
         <div class="mt-4 flex items-center gap-4 text-sm text-zinc-600">
@@ -84,12 +84,12 @@
             <img class="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=80&auto=format&fit=crop" alt=""/>
             <img class="w-8 h-8 rounded-full border-2 border-white" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=80&auto=format&fit=crop" alt=""/>
           </div>
-          <span>Mais de 4.500 famílias já praticam as sementes diárias</span>
+          <span id="estat">Mais de 4.500 famílias já praticam as sementes diárias</span>
         </div>
       </div>
 
       <div class="relative hidden md:block">
-        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=900&auto=format&fit=crop" alt="Livro com luz" class="rounded-3xl w-full h-[520px] object-cover card border border-zinc-100"/>
+        <img id="heroImg" src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=900&auto=format&fit=crop" alt="Livro com luz" class="rounded-3xl w-full h-[520px] object-cover card border border-zinc-100"/>
       </div>
     </div>
   </section>
@@ -107,17 +107,17 @@
 
       <div class="grid md:grid-cols-3 gap-6 mt-8">
         <div class="p-6 rounded-2xl bg-white border border-zinc-100 card">
-          <img class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=800&auto=format&fit=crop" alt="Caixinha"/>
+          <img id="boxImg" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=800&auto=format&fit=crop" alt="Caixinha"/>
           <h4 class="mt-4 font-semibold">Caixinha Encantadora</h4>
-          <p class="text-sm text-zinc-600 mt-1">Modelo para imprimir e montar — cabe certinho no criado‑mudo.</p>
+          <p class="text-sm text-zinc-600 mt-1">Modelo para imprimir e montar — cabe certinho no criado-mudo.</p>
         </div>
         <div class="p-6 rounded-2xl bg-white border border-zinc-100 card">
-          <img class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1612178991541-b47a2e8efb68?q=80&w=800&auto=format&fit=crop" alt="Cards"/>
+          <img id="cardsImg" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1612178991541-b47a2e8efb68?q=80&w=800&auto=format&fit=crop" alt="Cards"/>
           <h4 class="mt-4 font-semibold">100 Cards de Bênçãos</h4>
           <p class="text-sm text-zinc-600 mt-1">Orações curtas e versículos — 1 por dia ao longo de mais de 3 meses.</p>
         </div>
         <div class="p-6 rounded-2xl bg-white border border-zinc-100 card">
-          <img class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=800&auto=format&fit=crop" alt="Guia"/>
+          <img id="guideImg" class="w-full h-40 object-cover rounded-xl" src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=800&auto=format&fit=crop" alt="Guia"/>
           <h4 class="mt-4 font-semibold">Guia da Mãe Intencional</h4>
           <p class="text-sm text-zinc-600 mt-1">Atalhos práticos para conduzir o momento com leveza e propósito.</p>
         </div>
@@ -281,7 +281,7 @@
               <li>✅ Caixinha encantadora para montar</li>
               <li>✅ Guia da Mãe Intencional</li>
               <li>✅ Versões prontas para A4/A3</li>
-              <li>✅ Suporte por e‑mail</li>
+              <li>✅ Suporte por e-mail</li>
               <li>✅ Atualizações futuras</li>
             </ul>
           </div>
@@ -324,13 +324,95 @@
         </ul>
       </div>
       <div class="text-sm flex flex-col justify-end md:items-end">
-        <div>© <span id="y"></span> Sementes Diárias. Todos os direitos reservados.</div>
+        <div>© <span id="y"></span> <span id="nomeSite2">Sementes Diárias</span>. Todos os direitos reservados.</div>
       </div>
     </div>
   </footer>
 
+  <!-- SCRIPT: puxa data/content.json e injeta no HTML -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Transforma valor em URL final: aceita URL completa, caminho absoluto ou só nome do arquivo
+    function toUrl(v) {
+      if (!v) return null;
+      if (/^(https?:)?\/\//.test(v) || v.startsWith('/')) return v;
+      return '/static/uploads/' + v.replace(/^\/+/, '');
+    }
+
+    // Pega o primeiro campo existente entre várias opções de chave
+    function firstField(obj, keys) {
+      for (const k of keys) {
+        if (obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k]) {
+          return obj[k];
+        }
+      }
+      return null;
+    }
+
+    fetch('data/content.json?ts=' + Date.now(), { cache: 'no-store' })
+      .then(r => r.json())
+      .then(json => {
+        // se o CMS salvou aninhado, tentamos acessar o nível com os campos
+        const data = json.conteudo_do_site || json.content || json;
+
+        // Mapeamento de possíveis nomes de chaves (cobri várias variações para funcionar de 1ª)
+        const map = {
+          nomeSite: ['nome_do_site','nome_site','nome','titulo_site'],
+
+          heroImg:  ['hero_img','imagem_hero','hero_imagem','imagem_do_hero'],
+          boxImg:   ['caixinha_img','box_img','imagem_caixinha'],
+          cardsImg: ['cards_img','imagem_cards'],
+          guideImg: ['guia_img','guide_img','imagem_guia'],
+
+          titulo1:  ['hero_titulo_linha1','titulo1','hero_titulo1'],
+          titulo2:  ['hero_titulo_linha2','titulo2','hero_titulo2'],
+
+          frase:    ['hero_frase','frase_depoimento','hero_depoimento'],
+
+          cta1:     ['cta_primario','cta1','cta_primary'],
+          cta2:     ['cta_secundario','cta2','cta_secondary'],
+          estat:    ['estatistica_familias','estatisticas','familias_estatistica']
+        };
+
+        // ====== NOME DO SITE / TITLE ======
+        const nomeSiteVal = firstField(data, map.nomeSite);
+        if (nomeSiteVal) {
+          const ns = document.getElementById('nomeSite');
+          const ns2 = document.getElementById('nomeSite2');
+          if (ns)  ns.textContent  = nomeSiteVal;
+          if (ns2) ns2.textContent = nomeSiteVal;
+          document.title = nomeSiteVal + ' — Kit de Bênçãos Bíblicas para Família';
+        }
+
+        // ====== IMAGENS ======
+        const heroVal  = firstField(data, map.heroImg);
+        const boxVal   = firstField(data, map.boxImg);
+        const cardsVal = firstField(data, map.cardsImg);
+        const guideVal = firstField(data, map.guideImg);
+
+        if (heroVal)  { const el = document.getElementById('heroImg');  if (el) el.src  = toUrl(heroVal); }
+        if (boxVal)   { const el = document.getElementById('boxImg');   if (el) el.src   = toUrl(boxVal); }
+        if (cardsVal) { const el = document.getElementById('cardsImg'); if (el) el.src = toUrl(cardsVal); }
+        if (guideVal) { const el = document.getElementById('guideImg'); if (el) el.src = toUrl(guideVal); }
+
+        // ====== TEXTOS ======
+        const t1 = firstField(data, map.titulo1);
+        const t2 = firstField(data, map.titulo2);
+        const fr = firstField(data, map.frase);
+        const c1 = firstField(data, map.cta1);
+        const c2 = firstField(data, map.cta2);
+        const es = firstField(data, map.estat);
+
+        if (t1) { const el = document.getElementById('titulo1'); if (el) el.textContent = t1; }
+        if (t2) { const el = document.getElementById('titulo2'); if (el) el.textContent = t2; }
+        if (fr) { const el = document.getElementById('frase');   if (el) el.textContent = fr; }
+        if (c1) { const el = document.getElementById('cta1');    if (el) el.textContent = c1; }
+        if (c2) { const el = document.getElementById('cta2');    if (el) el.textContent = c2; }
+        if (es) { const el = document.getElementById('estat');   if (el) el.textContent = es; }
+        if (c1) { const el = document.getElementById('ctaTop');  if (el) el.textContent = c1; }
+      })
+      .catch(err => console.error('Erro ao carregar conteúdo do CMS:', err));
   </script>
 </body>
 </html>
